@@ -353,8 +353,7 @@ void AtomBrowserClient::RenderProcessWillLaunch(
     prefs.native_window_open =
         web_preferences->IsEnabled(options::kNativeWindowOpen);
     prefs.disable_popups = web_preferences->IsEnabled("disablePopups");
-    prefs.web_security = web_preferences->IsEnabled(options::kWebSecurity,
-                                                    true /* default value */);
+    prefs.web_security = web_preferences->IsEnabled(options::kWebSecurity);
   }
   AddProcessPreferences(host->GetID(), prefs);
   // ensure the ProcessPreferences is removed later

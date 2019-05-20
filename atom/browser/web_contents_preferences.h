@@ -36,9 +36,11 @@ class WebContentsPreferences
                          const mate::Dictionary& web_preferences);
   ~WebContentsPreferences() override;
 
+  // Set WebPreferences defaults onto the JS object.
+  void SetDefaults();
+
   // A simple way to know whether a Boolean property is enabled.
-  bool IsEnabled(const base::StringPiece& name,
-                 bool default_value = false) const;
+  bool IsEnabled(const base::StringPiece& name) const;
 
   // $.extend(|web_preferences|, |new_web_preferences|).
   void Merge(const base::DictionaryValue& new_web_preferences);
@@ -54,9 +56,6 @@ class WebContentsPreferences
 
   // Return true if the particular preference value exists.
   bool GetPreference(const base::StringPiece& name, std::string* value) const;
-
-  // Whether to enable the remote module
-  bool IsRemoteModuleEnabled() const;
 
   // Returns the preload script path.
   bool GetPreloadPath(base::FilePath::StringType* path) const;
